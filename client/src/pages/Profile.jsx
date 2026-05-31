@@ -87,10 +87,10 @@ export default function Profile() {
       </div>
 
       {/* Profile Info Header */}
-      <div className="relative px-4 sm:px-8 flex flex-col sm:flex-row gap-4 sm:gap-6 sm:items-end -mt-16 sm:-mt-20 mb-8">
+      <div className="relative px-4 sm:px-8 flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8">
         
         {/* Avatar */}
-        <div className="relative group self-start sm:self-auto">
+        <div className="relative group self-start sm:self-auto -mt-16 sm:-mt-20">
           <Avatar 
             src={profile.avatar} 
             initials={profile.name?.[0]} 
@@ -109,7 +109,7 @@ export default function Profile() {
         </div>
 
         {/* Name & Buttons */}
-        <div className="flex-1 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 z-10 pt-16 sm:pt-0">
+        <div className="flex-1 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10 pt-2 sm:pt-8">
           <div>
             <h1 className="text-3xl sm:text-4xl font-heading text-pencil leading-none mb-1">{profile.name}</h1>
             <p className="text-xl text-pencil/60 font-body">@{profile.username}</p>
