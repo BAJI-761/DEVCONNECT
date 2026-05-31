@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-paper border-b-[3px] border-pencil shadow-hard-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/feed" className="flex items-center gap-2 text-2xl font-heading text-pencil decoration-wavy hover:underline decoration-marker decoration-2">
+        <Link to="/" className="flex items-center gap-2 text-2xl font-heading text-pencil decoration-wavy hover:underline decoration-marker decoration-2">
           <span>DevConnect</span>
           <span className="text-marker">✏️</span>
         </Link>
