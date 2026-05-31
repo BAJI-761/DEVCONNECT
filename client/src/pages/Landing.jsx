@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Code2, Users, Paintbrush, ArrowRight, Globe, MessageSquare, Heart, Terminal, Sparkles, Coffee } from 'lucide-react';
 import Button from '../components/ui/Button';
+import { useAuthStore } from '../stores/authStore';
 
 export default function Landing() {
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   return (
     <div className="min-h-screen relative overflow-x-hidden flex flex-col bg-paper paper-texture">
       
@@ -23,12 +25,20 @@ export default function Landing() {
           <a href="#community" className="hover:text-pen transition-colors">Community</a>
         </nav>
         <div className="flex gap-4">
-          <Link to="/login">
-            <Button variant="ghost" className="text-lg">Log In</Button>
-          </Link>
-          <Link to="/register" className="hidden sm:block">
-            <Button className="text-lg shadow-hard-sm">Join</Button>
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/feed">
+              <Button className="text-lg shadow-hard-sm">Go to Feed</Button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button variant="ghost" className="text-lg">Log In</Button>
+              </Link>
+              <Link to="/register" className="hidden sm:block">
+                <Button className="text-lg shadow-hard-sm">Join</Button>
+              </Link>
+            </>
+          )}
         </div>
       </header>
 
@@ -61,16 +71,26 @@ export default function Landing() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
-            <Link to="/register">
-              <Button size="lg" className="w-full sm:w-auto text-2xl px-12 py-6 shadow-hard-lg hover:translate-y-1 hover:shadow-hard transition-all">
-                Start Sketching 🚀
-              </Button>
-            </Link>
-            <Link to="/login">
-              <Button variant="ghost" size="lg" className="w-full sm:w-auto text-2xl px-8 border-[3px] border-pencil wobbly shadow-hard hover:bg-pencil hover:text-paper transition-all">
-                Log In ✏️
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <Link to="/feed">
+                <Button size="lg" className="w-full sm:w-auto text-2xl px-12 py-6 shadow-hard-lg hover:translate-y-1 hover:shadow-hard transition-all">
+                  Go to Feed 🚀
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/register">
+                  <Button size="lg" className="w-full sm:w-auto text-2xl px-12 py-6 shadow-hard-lg hover:translate-y-1 hover:shadow-hard transition-all">
+                    Start Sketching 🚀
+                  </Button>
+                </Link>
+                <Link to="/login">
+                  <Button variant="ghost" size="lg" className="w-full sm:w-auto text-2xl px-8 border-[3px] border-pencil wobbly shadow-hard hover:bg-pencil hover:text-paper transition-all">
+                    Log In ✏️
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
           
           {/* Hand drawn arrow pointing at CTA */}

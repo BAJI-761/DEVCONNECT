@@ -26,9 +26,11 @@ function App() {
         }}
       />
       <Routes>
-      {/* Public / Guest routes */}
+      {/* Public route */}
+      <Route path="/" element={<Landing />} />
+
+      {/* Guest Only routes */}
       <Route element={<GuestGuard />}>
-        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>
