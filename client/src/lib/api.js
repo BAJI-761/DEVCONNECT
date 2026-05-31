@@ -29,8 +29,8 @@ api.interceptors.response.use(
       originalRequest._retry = true;
       
       try {
-        // Attempt to get a new access token via refresh token cookie
-        const res = await axios.post('/api/auth/refresh', {}, { withCredentials: true });
+        const baseURL = import.meta.env.VITE_API_URL || '/api';
+        const res = await axios.post(`${baseURL}/auth/refresh`, {}, { withCredentials: true });
         const { accessToken } = res.data;
         
         if (accessToken) {
