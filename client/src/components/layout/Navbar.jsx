@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
 import { useLogout } from '../../features/auth/useAuth';
 import Button from '../ui/Button';
@@ -9,6 +9,7 @@ import { LogOut, Home } from 'lucide-react';
 export default function Navbar() {
   const user = useAuthStore((state) => state.user);
   const { mutate: logout } = useLogout();
+  const navigate = useNavigate();
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-paper border-b-[3px] border-pencil shadow-hard-sm">
@@ -37,7 +38,7 @@ export default function Navbar() {
             </Link>
           )}
 
-          <Button variant="ghost" size="sm" onClick={() => logout()} className="ml-2 gap-2 text-marker hover:text-marker hover:bg-marker/10">
+          <Button variant="ghost" size="sm" onClick={() => logout(undefined, { onSuccess: () => navigate('/') })} className="ml-2 gap-2 text-marker hover:text-marker hover:bg-marker/10">
             <LogOut size={18} strokeWidth={2.5} />
             Logout
           </Button>

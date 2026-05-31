@@ -78,7 +78,7 @@ export default function Profile() {
         {isOwnProfile && (
           <button 
             onClick={() => coverInputRef.current?.click()}
-            className="absolute bottom-4 right-4 bg-paper/80 p-2 border-2 border-pencil rounded-full hover:bg-paper transition-colors shadow-hard-sm opacity-0 group-hover:opacity-100"
+            className="absolute bottom-4 right-4 bg-paper/80 p-2 border-2 border-pencil rounded-full hover:bg-paper transition-colors shadow-hard-sm"
           >
             <Camera size={20} className="text-pencil" />
           </button>
